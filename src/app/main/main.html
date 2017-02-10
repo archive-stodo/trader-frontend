@@ -1,0 +1,51 @@
+<div class="container" id="my-main-page">
+
+<div class="jumbotron"></div>
+    <div class="row">
+        <div class="col-sm-8">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>E-mail</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="trader in vm.traders" 
+                        ng-model="vm.trader" 
+                        ng-click="vm.traderClicked(trader)"
+                        ng-class="{chosen: $index == (vm.currentTrader.id - 1)}">
+                        <td>{{trader.firstName}}</td>
+                        <td>{{trader.lastName}}</td>
+                        <td>{{trader.email}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <label for="numPages"> Trades per page: </label>
+            <select name="numPages" id="numPages" 
+                ng-model="vm.itemsPerPage"
+                ng-options="options for options in vm.itemsPerPageOptions"
+                ng-change="vm.saveTrades()">
+            </select><br>
+            <div class="trader-trades" ng-repeat="trade in vm.currentTrades">
+                <single-trade trade = "trade"></single-trade>
+                
+            </div>
+            <ul uib-pagination class="pull-right"
+                total-items="vm.totalElements"
+                items-per-page="vm.itemsPerPage"
+                ng-model="vm.currentPage"
+                ng-change="vm.pageChanged()">
+            </ul>
+        </div>
+        <div class="col-sm-4">
+            <div id="tradingview_e7ec0-wrapper" style="     position: relative;box-sizing: content-box;width: 100%;height: 400px;margin: 0 auto !important;padding: 0 !important;font-family:Arial,sans-serif;"><div style="width: 100%;height: 400px;background: #fff;padding: 0 !important;"><iframe id="tradingview_e7ec0" src="https://s.tradingview.com/miniwidgetembed/?Commodities=Emini,Euro,Gold,Oil,Gas,Corn&amp;Equities=S%26P500,NQ100,Dow30,Nikkei225,Appsinglle,Google&amp;Bonds=US%202YR,US%2010YR,US%2030YR,Euro%20Bund,Euro%20BTP,Euro%20BOBL&amp;Forex=FX%3AEURUSD,FX%3AGBPUSD,FX%3AUSDJPY,FX%3AUSDCHF,FX%3AAUDUSD,FX%3AUSDCAD&amp;tabs=Commodities%2CEquities%2CBonds%2CForex&amp;S%26P500=%20SPX500&amp;NQ100=%20NAS100&amp;Dow30=DOWI&amp;Nikkei225=JPN225&amp;Apple=%20BATS%3AAAPL%20&amp;Google=BATS%3AGOOG&amp;Emini=ES1!&amp;Euro=E61!&amp;Gold=GC1!&amp;Oil=CL1!&amp;Gas=NG1!&amp;Corn=ZC1!&amp;US%202YR=TUZ2013&amp;US%2010YR=TYZ2013&amp;US%2030YR=USZ2013&amp;Euro%20Bund=FX%3ABUND&amp;Euro%20BTP=EUREX%3AII1!&amp;Euro%20BOBL=EUREX%3AHR1!&amp;large_chart_url=http%3A%2F%2Fwww.futuresmag.com%2Fpage%2Finteractive-charts&amp;width=300px&amp;height=400&amp;utm_source=www.futuresmag.com&amp;utm_medium=widget&amp;utm_campaign=market-overview" width="100%" height="400" frameborder="0" allowtransparency="true" scrolling="no" style="margin: 0 !important; padding: 0 !important;"></iframe></div><div style="position:absolute;display: block;box-sizing: content-box;height: 24px;width: 100%;bottom: 0;left: 0;margin: 0;padding: 0;font-family: Arial,sans-serif;"><div style="display: block;margin: 0 1px 1px 1px;line-height: 7px;box-sizing: content-box;height: 11px;padding: 6px 10px;text-align: right;background: #fff;"></div></div>
+            </div>
+            
+            <div style="display: block; width: 100%;height: 220px;background: transparent;padding: 0 !important;">
+                <iframe id="tradingview_dddcc" src="https://s.tradingview.com/widgetembed/?symbol=AMEX:SPY&amp;interval=360&amp;hidesidetoolbar=1&amp;symboledit=1&amp;saveimage=0&amp;toolbarbg=E4E8EB&amp;studies=&amp;hideideas=1&amp;studies_overrides=%7B%7D&amp;overrides=%7B%7D&amp;enabled_features=%5B%5D&amp;disabled_features=%5B%5D&amp;utm_source=www.forexdirectory.net&amp;utm_medium=widget&amp;utm_campaign=chart&amp;utm_term=INDEX%3ADXY" width="100%" height="400" frameborder="0" allowtransparency="true" scrolling="no" allowfullscreen="true"></iframe>
+            </div>
+        </div>
+    </div>
+</div>

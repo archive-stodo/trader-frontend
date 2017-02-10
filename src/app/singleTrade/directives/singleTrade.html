@@ -1,0 +1,39 @@
+<div class="single-trade-wrapper">
+	<div class="row">
+	  <div class="col-sm-8">
+	  	<div class="row">
+			<div class="col-sm-6">
+				<span class="label">symbol:</span>{{vm.trade.instrumentName}}
+			</div>
+			<div class="col-sm-6">
+				<span class="label">quantity:</span>{{vm.trade.numberOfInstruments}}
+			</div>
+		</div>
+	  	<div class="row">
+			<div class="col-sm-6">
+				<span class="label">entry price:</span>{{vm.trade.entryPrice}}
+			</div>	
+			<div class="col-sm-6">
+				<span class="label">close price:</span>{{vm.trade.currentClosePrice}}
+			</div>
+		</div>
+	  	<div class="row">
+			<div class="col-sm-6">
+				<span class="label">open:</span>{{vm.secsToDate(vm.trade.openTime).toLocaleString()}}
+			</div>
+			<div class="col-sm-6">
+				<span class="label">close:</span>{{vm.secsToDate(vm.trade.closeTime).toLocaleString()}}
+			</div>
+		</div>
+	  	<div class="row">
+			<div class="col-sm-12" style="height: 100%">
+				<span style="margin: 8px;">{{vm.trade.notes}}</span>
+			</div>
+		</div>
+	  </div>
+	  <div class="col-sm-4">
+			<img ng-hide= "vm.trade.image.length == undefined" 
+    		ng-src="data:image/JPEG;base64,{{vm.trade.image}}" width="100%">
+	  </div>
+	</div>
+</div>
